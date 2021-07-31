@@ -7,16 +7,377 @@
     <title>Tsuki-App</title>
     <link rel="icon" href="images/icon.png">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header></header>
+    <header>
+        <div class="image__container">
+            <div class="gradient__container">
+                <img src="images/icon.png" alt="icon" class="gradient__container-logo">
+                <h1 class="gradient__container-title">TSUKI</h1>
+            </div>
+        </div>
+        <nav>
+            <h4 class="nav__tooltip tooltip">
+                Searching and tracking your favorite animes was never this easy!
+            </h4>
+            <div class="nav__links">
+                <a href="" class="nav__links-link">About us</a>
+                <a href="" class="nav__links-link">Github</a>
+            </div>
+        </nav>
+    </header>
+    <div class="stickyNav">
+        <a href="#searchCard" class="stickyNav__link">SEARCH</a>
+        <a href="#newsCard" class="stickyNav__link">NEWS</a>
+        <a href="#seasonalCard" class="stickyNav__link">SEASONAL</a>
+        <a href="#topCard" class="stickyNav__link">TOP</a>
+    </div>
     <main>
-        <div class="anime__card">
-            <img src="" alt="" id="anime__card-image">
-            <p id="anime__card-title"></p>
+        <div class="container">
+            <div class="container__card">
+                <div class="card__header" id="searchCard">
+                    <div class="header__title">
+                        <h2 class="header__title-title">
+                            <label for="searchInput">SEARCH</label>
+                        </h2>
+                        <input type="text" class="header__title-input" name="searchInput" id="searchInput">
+                    </div>
+                    <div class="header__tooltip">
+                        <h4 class="header__tooltip-tooltip tooltip">
+                            Search info about the animes you like!
+                        </h4>
+                    </div>
+                </div>
+                <div class="card__body searchCard__body">
+                    <div class="card__body-cover card__body-element">
+                        <div class="cover__visuals card__items-container">
+                            <div class="cover__thumbnail--loading loading">
+                                <img src="" alt="" class="cover__thumbnail-image">
+                            </div>
+                            <div class="cover__thumbnail-rating">
+                                <h3 class="cover__thumbnail-score--loading loading"></h3>
+                                <div class="cover__thumbnail-scoreBar--loading loading">
+                                    <div class="cover__thumbnail-scoreBarProgress"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cover__text card__items-container">
+                            <h2 class="cover__description-title--loading loading"></h2>
+                            <p class="cover__description-text--loading loading">
+                                
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card__body-characters card__body-element">
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                        <div class="characters__characters card__items-container">
+                            <div class="characters__thumbnail--loading loading">
+                                <img src="" alt="" class="characters__thumbnail-img">
+                            </div>
+                            <h5 class="characters__characterName--loading loading"></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__body--empty">
+                    <h1 class="card__body--empty-title">It's kinda empty here...</h1>
+                    <p class="card__body--empty-text">Type the name of an anime you know to start browsing!</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container__card">
+                <div class="card__header" id="newsCard">
+                    <div class="header__title">
+                        <h2 class="header__title-title" >
+                            <label for="newsInput">NEWS</label>
+                        </h2>
+                        <input type="text" class="header__title-input" name="newsInput" id="newsInput">
+                    </div>
+                    <div class="header__tooltip">
+                        <h4 class="header__tooltip-tooltip tooltip">
+                            Stay up to date with the latest anime-related news, or search for the ones you like the most!
+                        </h4>
+                    </div>
+                </div>
+                <div class="card__body newsCard__body">
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-news card__items-container">
+                        <div class="news__thumbnail--loading loading">
+                            <img src="" alt="" class="news__thumbnail-img">
+                        </div>
+                        <p class="news__title--loading loading"></p>
+                    </div>
+                </div>
+                <div class="card__footer">
+                    <button id="newsSeeMore" class="card__footer-button">SEE MORE</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container__card">
+                <div class="card__header" id="seasonalCard">
+                    <div class="header__title">
+                        <h2 class="header__title-title">
+                            SEASONAL
+                        </h2>
+                    </div>
+                    <div class="header__tooltip">
+                        <h4 class="header__tooltip-tooltip tooltip">
+                            Check what animes are coming this season!
+                        </h4>
+                    </div>
+                </div>
+                <div class="card__body seasonalCard__body">
+                    <div class="card__body-seasonal">
+                        <div class="seasonal__cover">
+                            <div class="seasonal__cover-thumbnail--loading loading">
+                                <div class="seasonal__thumbnail-rating--loading">
+                                    <h3 class="seasonal__thumbnail-score--loading loading"></h3>
+                                    <div class="seasonal__thumbnail-scoreBar--loading loading">
+                                        <div class="seasonal__thumbnail-scoreBarProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seasonal__description">
+                            <div class="seasonal__description-mainInfo">
+                                <h2 class="seasonal__description-title--loading loading"></h2>
+                                <div class="seasonal__description-info--loading loading"></div>
+                            </div>
+                            <div class="seasonal__description-tags">
+                                <h4 class="tags-genre--loading loading"></h4>
+                                <h4 class="tags-producer--loading loading"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__body-seasonal">
+                        <div class="seasonal__cover">
+                            <div class="seasonal__cover-thumbnail--loading loading">
+                                <div class="seasonal__thumbnail-rating--loading">
+                                    <h3 class="seasonal__thumbnail-score--loading loading"></h3>
+                                    <div class="seasonal__thumbnail-scoreBar--loading loading">
+                                        <div class="seasonal__thumbnail-scoreBarProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seasonal__description">
+                            <div class="seasonal__description-mainInfo">
+                                <h2 class="seasonal__description-title--loading loading"></h2>
+                                <div class="seasonal__description-info--loading loading"></div>
+                            </div>
+                            <div class="seasonal__description-tags">
+                                <h4 class="tags-genre--loading loading"></h4>
+                                <h4 class="tags-producer--loading loading"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__body-seasonal">
+                        <div class="seasonal__cover">
+                            <div class="seasonal__cover-thumbnail--loading loading">
+                                <div class="seasonal__thumbnail-rating--loading">
+                                    <h3 class="seasonal__thumbnail-score--loading loading"></h3>
+                                    <div class="seasonal__thumbnail-scoreBar--loading loading">
+                                        <div class="seasonal__thumbnail-scoreBarProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seasonal__description">
+                            <div class="seasonal__description-mainInfo">
+                                <h2 class="seasonal__description-title--loading loading"></h2>
+                                <div class="seasonal__description-info--loading loading"></div>
+                            </div>
+                            <div class="seasonal__description-tags">
+                                <h4 class="tags-genre--loading loading"></h4>
+                                <h4 class="tags-producer--loading loading"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__body-seasonal">
+                        <div class="seasonal__cover">
+                            <div class="seasonal__cover-thumbnail--loading loading">
+                                <div class="seasonal__thumbnail-rating--loading">
+                                    <h3 class="seasonal__thumbnail-score--loading loading"></h3>
+                                    <div class="seasonal__thumbnail-scoreBar--loading loading">
+                                        <div class="seasonal__thumbnail-scoreBarProgress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="seasonal__description">
+                            <div class="seasonal__description-mainInfo">
+                                <h2 class="seasonal__description-title--loading loading"></h2>
+                                <div class="seasonal__description-info--loading loading"></div>
+                            </div>
+                            <div class="seasonal__description-tags">
+                                <h4 class="tags-genre--loading loading"></h4>
+                                <h4 class="tags-producer--loading loading"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card__footer">
+                    <button id="seasonalSeeMore" class="card__footer-button">SEE MORE</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container__card">
+                <div class="card__header" id="topCard">
+                    <div class="header__title">
+                        <h2 class="header__title-title">
+                            TOP
+                        </h2>
+                    </div>
+                    <div class="header__tooltip">
+                        <h4 class="header__tooltip-tooltip tooltip">
+                            See a list of all-time´s top animes!
+                        </h4>
+                    </div>
+                </div>
+                <div class="card__body topCard__body">
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                    <div class="card__body-top card__items-container">
+                        <div class="top__thumbnail--loading loading">
+                            <img src="" alt="" class="top__thumbnail-img">
+                        </div>
+                        <p class="top__title--loading loading"></p>
+                    </div>
+                </div>
+                <div class="card__footer">
+                    <button id="topSeeMore" class="card__footer-button">SEE MORE</button>
+                </div>
+            </div>
         </div>
     </main>
+    <footer>
+        <div class="footer__links">
+            <a href="" class="footer__links-link">Instagram</a>
+            <a href="" class="footer__links-link">Twitter</a>
+            <div class="footer__links-logo">
+                <img class="links__logo-icon" src="/images/icon.png" alt="icon">
+                <p class="links__logo-name"><span>&copy</span>Tsuki-App, 2021</p>
+            </div>
+            <a href="" class="footer__links-link">Github</a>
+            <a href="" class="footer__links-link">About us</a>
+        </div>
+    </footer>
 </body>
 <script src="script.js"></script>
 </html>
