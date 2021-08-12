@@ -8,7 +8,7 @@
 
     /* bg-colors */
     --white: hsl(0, 0%, 100%);
-    --dark-red: hsl(0, 79%, 34%);
+    --dark-red: hsl(0, 78%, 36%);
     --dark-gray: hsl(0, 0%, 25%);
     --transparent-white: hsla(0, 0%, 100%, 0.44);
     --transparent-gray: hsla(0, 0%, 0%, 0.075);
@@ -188,6 +188,7 @@ nav {
 }
 
 .header__title-input {
+    color: var(--font-white);
     border: none;
     outline: none;
     background: var(--transparent-white);
@@ -210,10 +211,12 @@ nav {
 .card__body-cover {
     grid-template-columns: calc(40% - 1em) calc(60% - 1em);
     grid-gap: 2em;
+    background-color: var(--transparent-gray);
 }
 
 .cover__thumbnail {
     min-width: 100%;
+    border: 5px solid var(--dark-gray);
 }
 
 .cover__thumbnail--loading {
@@ -224,6 +227,8 @@ nav {
 .cover__thumbnail-img {
     min-width: 100%;
     max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
 }
 
 .cover__thumbnail-rating {
@@ -237,6 +242,8 @@ nav {
 .cover__thumbnail-score {
     display: flex;
     justify-content: center;
+    font-weight: 600;
+    font-size: 1.5em;
 }
 
 .cover__thumbnail-score--loading {
@@ -264,14 +271,15 @@ nav {
 }
 
 .cover__description-title {
+    color: var(--font-white);
     text-align: center;
     border-bottom: 0.25em solid var(--dark-red);
     font-size: 1.75em;
     font-weight: 600;
+    margin: 0;
+    padding: 0.2em 1em;
+    background-color: var(--dark-gray);
     min-width: 100%;
-    margin-top: 0;
-    margin-bottom: 0.5em;
-    padding-bottom: 0.2em;
 }
 
 .cover__description-title--loading {
@@ -284,25 +292,26 @@ nav {
     font-weight: 300;
     line-height: 1.5em;
     text-align: justify;
-    margin-bottom: 0;
+    margin: 0;
     overflow-y: scroll;
+    padding-top: 0.75em;
     padding-right: 0.75em;
-    max-height: 350px;
+    max-height: 390px;
 }
 
-.cover__description-text::-webkit-scrollbar {
+.cover__description-text::-webkit-scrollbar, .seasonal__description-info::-webkit-scrollbar {
     width: 7px;
 }
 
-.cover__description-text::-webkit-scrollbar-track {
+.cover__description-text::-webkit-scrollbar-track, .seasonal__description-info::-webkit-scrollbar-track {
     background: var(--transparent-black);
 }
 
-.cover__description-text::-webkit-scrollbar-thumb {
+.cover__description-text::-webkit-scrollbar-thumb, .seasonal__description-info::-webkit-scrollbar-thumb {
     background: var(--transparent-black);
 }
 
-.cover__description-text::-webkit-scrollbar-thumb:hover {
+.cover__description-text::-webkit-scrollbar-thumb:hover, .seasonal__description-info::-webkit-scrollbar-thumb:hover {
     background: var(--dark-red);
 }
 
@@ -325,7 +334,8 @@ nav {
 .characters__thumbnail {
     overflow: hidden;
     width: 80%;
-    border: 2px solid var(--dark-red);
+    border: 3px solid var(--dark-gray);
+    box-shadow: 5px 5px 0 var(--dark-red);
 }
 
 .characters__thumbnail--loading {
@@ -360,19 +370,79 @@ nav {
 
 .newsCard__body, .topCard__body {
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 2em;
+    grid-gap: 1.5em;
     padding: 2em 2em 3em;
 }
 
-.news__thumbnail--loading, .top__thumbnail--loading {
-    aspect-ratio: 1/1.5;
+.card__body-news, .card__body-top {
+    justify-content: flex-start;
+}
+
+.news__thumbnail, .top__thumbnail {
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-position: center center;
+    background-size: cover;
+    aspect-ratio: 1/1.25;
+    border: 3px solid var(--dark-gray);
+    box-shadow: 9px 9px 0 var(--dark-red);
+}
+
+.news__thumbnail--loading, .top__thumbnail--loading {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    aspect-ratio: 1/1.25;
+}
+
+.news__thumbnail-container {
+    padding: 1.5em 0.75em 0.75em;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.container__date {
+    font-weight: 300;
+    text-align: center;
+    color: var(--font-white);
+    font-size: 0.9em;
+    margin: 0;
+    width: 100%;
+    background-color: var(--transparent-black);
+}
+
+.container__date--loading {
+    margin: 0;
+    height: 1em;
+    width: 100%;
+}
+
+.news__title, .top__title {
+    color: black;
+    text-align: center;
+    line-height: 1.5em;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 1.25em;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.news__title:hover, .top__title:hover {
+    text-decoration: underline;
 }
 
 .news__title--loading, .top__title--loading {
     height: 2.5em;
     width: 100%;
     margin-bottom: 0;
+    margin-top: 1em;
 }
 
 /* -----------------SEASONAL CARD-------------------- */
@@ -380,14 +450,24 @@ nav {
 .seasonalCard__body {
     padding-bottom: 3em;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
 }
 
 .card__body-seasonal {
     padding: 2em 2em 0;
     display: grid;
-    grid-template-columns: calc(40% - 1em) calc(60% - 1em);
+    grid-template-columns: calc(35% - 1em) calc(65% - 1em);
     grid-gap: 2em;
+}
+
+.seasonal__cover-thumbnail {
+    aspect-ratio: 1/1.5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-position: center center;
+    background-size: cover;
+    border: 5px solid var(--dark-gray);
 }
 
 .seasonal__cover-thumbnail--loading {
@@ -398,13 +478,29 @@ nav {
     justify-content: flex-end;
 }
 
+.seasonal__thumbnail-rating {
+    padding: .75em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+}
+
 .seasonal__thumbnail-rating--loading {
     padding: .75em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    /* background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%); */
+}
+
+.seasonal__thumbnail-score {
+    color: var(--font-white);
+    font-size: 1.25em;
+    margin: 0.5em 0;
+    padding: .1em;
+    background-color: var(--transparent-black);
 }
 
 .seasonal__thumbnail-score--loading {
@@ -414,9 +510,19 @@ nav {
     margin-bottom: 0.75em;
 }
 
+.seasonal__thumbnail-scoreBar {
+    height: 0.5em;
+    width: 100%;
+    background-color: var(--transparent-black);
+}
+
 .seasonal__thumbnail-scoreBar--loading {
     height: 0.5em;
     width: 100%;
+}
+
+.seasonal__thumbnail-scoreBarProgress {
+    height: 100%;
 }
 
 .seasonal__description {
@@ -432,10 +538,33 @@ nav {
     height: 100%;
 }
 
+.seasonal__description-title {
+    color: var(--font-white);
+    border-bottom: 0.25em solid var(--dark-red);
+    background-color: var(--dark-gray);
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0;
+    padding: 0.2em 1em;
+}
+
 .seasonal__description-title--loading {
     height: 2em;
     min-width: 100%;
     margin-top: 0;
+}
+
+.seasonal__description-info {
+    text-align: justify;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin-bottom: 0;
+    overflow-y: scroll;
+    max-height: 200px;
+    padding-top: 0.75em;
+    padding-right: 0.75em;
+    margin: 0;
 }
 
 .seasonal__description-info--loading {
