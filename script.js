@@ -36,7 +36,18 @@ function redirect(urlIndex) {
     window.open(urlIndex.url)
 }
 
+function deleteNewsChild() {
+    var e = document.getElementsByClassName("newsCard__body")[0];
+    var first = e.firstElementChild;
+    while (first) {
+        first.remove();
+        first = e.firstElementChild;
+    }
+}
+
 function createNews() {
+    document.getElementsByClassName("newsCard__body")[0].classList.replace("newsCard__body--detailed", "newsCard__body")
+
     news = document.createElement("div")
     news.classList.add("card__body-news")
     news.classList.add("card__items-container")
@@ -62,6 +73,32 @@ function createNews() {
     news.append(title)
 
     document.getElementsByClassName("newsCard__body")[0].append(news)
+}
+
+function createDetailedNews() {
+    document.getElementsByClassName("newsCard__body")[0].classList.replace("newsCard__body", "newsCard__body--detailed")
+
+    thumbnail = document.createElement("img")
+    thumbnail.classList.add("news__detailedThumbnail")
+    thumbnail.classList.add("loading")
+
+    info = document.createElement("div")
+    info.classList.add("news__detailedInfo")
+
+    title = document.createElement("h2")
+    title.classList.add("news__detailedInfo-title")
+    title.classList.add("loading")
+
+    description = document.createElement("p")
+    description.classList.add("news__detailedInfo-description")
+    description.classList.add("scrollElement")
+    description.classList.add("loading")
+
+    info.append(title)
+    info.append(description)
+
+    document.getElementsByClassName("newsCard__body--detailed")[0].append(thumbnail)
+    document.getElementsByClassName("newsCard__body--detailed")[0].append(info)
 }
 
 function createSeasonal() {
@@ -252,7 +289,6 @@ function hideAnimeInfo(containerIndex) {
 
 function displayAnimeInfo(fetchedInfo, containerIndex, detailSearch){
     containers[containerIndex].classList.add("displayingInfo")
-    console.log(fetchedInfo)
     if(containerIndex === 0) {
 
         document.getElementsByClassName("cover__thumbnail--loading")[0].classList.remove("loading")
@@ -309,9 +345,20 @@ function displayAnimeInfo(fetchedInfo, containerIndex, detailSearch){
     } else if(containerIndex === 1) {
 
         if(detailSearch !== null) {
+            deleteNewsChild()
+            createDetailedNews()
             fetch(`http://localhost:5000/anime/news/details?id=${detailSearch}`)
             .then(response => response.json())
-            .then(processedResponse => console.log(processedResponse))
+            .then(processedResponse => {
+                console.log(processedResponse)
+                document.getElementsByClassName("news__detailedThumbnail")[0].classList.remove("loading")
+                document.getElementsByClassName("news__detailedInfo-title")[0].classList.remove("loading")
+                document.getElementsByClassName("news__detailedInfo-description")[0].classList.remove("loading")
+
+                document.getElementsByClassName("news__detailedThumbnail")[0].src = processedResponse.contentImage
+                document.getElementsByClassName("news__detailedInfo-title")[0].innerText = processedResponse.contentTitle
+                document.getElementsByClassName("news__detailedInfo-description")[0].innerText = processedResponse.contentDescription
+            })
             .catch(error => console.warn(error))
         } else {
 
@@ -333,6 +380,7 @@ function displayAnimeInfo(fetchedInfo, containerIndex, detailSearch){
             
             document.getElementsByClassName("news__title")[i + loadedNewsLength].innerText = savedFetchInfo.news[i + loadedNewsLength].newsTitle
             document.getElementsByClassName("news__title")[i + loadedNewsLength].addEventListener("click", () => {
+                
                 displayAnimeInfo(null, 1, savedFetchInfo.news[i + loadedNewsLength].newsID)
                 console.log(savedFetchInfo.news[i + loadedNewsLength].newsID)
             })
@@ -376,7 +424,6 @@ function displayAnimeInfo(fetchedInfo, containerIndex, detailSearch){
             if(savedFetchInfo.seasonal[i + loadedSeasonalLength].score !== null) {
                 document.getElementsByClassName("seasonal__thumbnail-score")[i + loadedSeasonalLength].innerText = parseFloat(savedFetchInfo.seasonal[i + loadedSeasonalLength].score).toFixed(1) + " / 10"
                 scoreBarProgress = savedFetchInfo.seasonal[i + loadedSeasonalLength].score / 10 * 100
-                console.log(scoreBarProgress)
                 document.getElementsByClassName("seasonal__thumbnail-scoreBarProgress")[i + loadedSeasonalLength].style.width = `${scoreBarProgress}%`
                 if(scoreBarProgress <= 40) {
                     document.getElementsByClassName("seasonal__thumbnail-scoreBarProgress")[i + loadedSeasonalLength].style.backgroundColor = "var(--low-rating-red)"
@@ -404,7 +451,6 @@ function displayAnimeInfo(fetchedInfo, containerIndex, detailSearch){
         loadedTopLength = document.getElementsByClassName("top__title").length
         loadingTopLength = document.getElementsByClassName("top__title--loading").length
 
-        console.log(loadedTopLength)
         for (let i = 0; i < loadingTopLength; i++) {
             
             document.getElementsByClassName("top__thumbnail--loading")[0].classList.remove("loading")
